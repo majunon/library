@@ -4,7 +4,7 @@
   font-family: 'Raleway', sans-serif;
 }
 
-#container {
+.cards-container {
   display: flex;
   gap: 25px;
 }
@@ -31,4 +31,11 @@
 .pages, .read {
   font-size: 12px;
   align-self: end;
+}
+
+.addBook{
+  background-color: white;
+  border: solid black 1px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
+  margin : 25px;
 }

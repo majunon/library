@@ -17,7 +17,7 @@ function addBookToLibrary(title, author, nbOfPages, alreadyRead) {
 addBookToLibrary('Titre1', 'Auteur1', 100, 'déjà lu');
 addBookToLibrary('Titre2', 'Auteur2', 200, 'pas lu');
 
-const wrap = document.querySelector('#container');
+const wrap = document.querySelector('.cards-container');
 
 function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
