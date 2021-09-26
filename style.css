@@ -66,3 +66,9 @@
   width:50%;
   margin:auto;
 }
+
+.suppr-button{
+  width:30px;
+  background-color: white;
+  border: solid black 1px;
+}

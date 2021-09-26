@@ -15,8 +15,8 @@ const dejaLu = document.querySelector('#form-checkbox');
 
 
 // The constructor
-function Book(title, author, nbOfPages, alreadyRead) {
-  let str;
+function Book(id, title, author, nbOfPages, alreadyRead) {
+  this.id = id;
   this.title = title;
   this.author = author;
   this.nbOfPages = nbOfPages;
@@ -28,7 +28,8 @@ function Book(title, author, nbOfPages, alreadyRead) {
 
 // A function to add a book in the library
 function addBookToLibrary(title, author, nbOfPages, alreadyRead) {
-  myLibrary.push(new Book(title, author, nbOfPages, alreadyRead));
+  let id = myLibrary.length;
+  myLibrary.push(new Book(id,title, author, nbOfPages, alreadyRead));
 }
 
 // Some books exemples
@@ -50,6 +51,7 @@ function displayBooks() {
     let author = document.createElement('div');
     let pages = document.createElement('div');
     let read = document.createElement('div');
+    let suppr = document.createElement('button');
 
     title.innerText = myLibrary[i].title;
     author.innerText = `by ${myLibrary[i].author}`;
@@ -60,17 +62,23 @@ function displayBooks() {
     else{
       read.innerText = "Pas encore lu";
     }
+    suppr.innerText = "X";
 
     card.classList.add("card");
+    let data_id = document.createAttribute("data-id");
+    data_id.value = myLibrary[i].id;
+    card.setAttributeNode(data_id);
     title.classList.add("title");
     author.classList.add("author");
     pages.classList.add("pages");
     read.classList.add("read");
+    suppr.classList.add("suppr-button");
 
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
+    card.appendChild(suppr);
     wrap.appendChild(card);
   }
 }
