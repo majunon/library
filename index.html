@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,23 @@
   <link rel="stylesheet" href="style.css">
   <script rel="javascript" src="script.js" defer></script>
 </head>
+
 <body>
-  <div class="cards-container">
-  </div>
-  <button class="addBook">NEW BOOK</button>
+  <div class="cards-container"></div>
+
+  <button class="addBook">AJOUTER UN LIVRE</button>
+
+  <form class="formAddBook">
+    <label>Titre</label>
+    <input type="text">
+    <label>Auteur</label>
+    <input type="text">
+    <label>Nombre de pages</label>
+    <input type="number">
+    <label>Déjà lu ?</label>
+    <input id="form-checkbox" type="checkbox">
+    <input id="form-button" type="button" value="Créer l'entrée">
+  </form>
 </body>
+
 </html>

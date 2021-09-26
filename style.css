@@ -7,6 +7,7 @@
 .cards-container {
   display: flex;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -15,12 +16,12 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .title {
   font-size: 36px;
   font-weight: 900;
-  align-self: center;
 }
 
 .author {
@@ -38,4 +39,30 @@
   border: solid black 1px;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
   margin : 25px;
+  font-size: 20px;;
+}
+
+.formAddBook{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  width:50%;
+  position: absolute;
+  left:50%;
+  bottom: 50%;
+  transform: translate(-50%,0);
+  margin: auto;
+  padding: 20px;
+  border: solid black 1px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
+  background-color: white;
+  visibility:hidden;
+}
+
+#form-checkbox{
+  align-self: flex-start;
+}
+#form-button{
+  width:50%;
+  margin:auto;
 }

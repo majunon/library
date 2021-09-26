@@ -1,5 +1,13 @@
-let myLibrary = [];
+let myLibrary = []; //My book library
+// The cards container
+const wrap = document.querySelector('.cards-container');
+// Add book button
+const newBookButton = document.querySelector('.addBook');
+// Form to add book
+const formAddBook = document.querySelector('.formAddBook');
 
+
+// The constructor
 function Book(title, author, nbOfPages, alreadyRead) {
   this.title = title;
   this.author = author;
@@ -10,15 +18,18 @@ function Book(title, author, nbOfPages, alreadyRead) {
   }
 }
 
+// A function to add a book in the library
 function addBookToLibrary(title, author, nbOfPages, alreadyRead) {
   myLibrary.push(new Book(title, author, nbOfPages, alreadyRead));
 }
 
-addBookToLibrary('Titre1', 'Auteur1', 100, 'déjà lu');
-addBookToLibrary('Titre2', 'Auteur2', 200, 'pas lu');
+// Some books exemples
+addBookToLibrary("L'interprétation du rêve", 'Sigmund Freud', 643, 'pas lu');
+addBookToLibrary('Ethique', 'Baruch Spinoza', 400, 'lu');
+addBookToLibrary("Emile ou de l'éducation", 'Jean-Jacques Rousseau', 512, 'pas lu');
+addBookToLibrary('La république', 'Platon', 818, 'lu');
 
-const wrap = document.querySelector('.cards-container');
-
+// Function to displayBooks
 function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement('div');
@@ -45,5 +56,10 @@ function displayBooks() {
     wrap.appendChild(card);
   }
 }
-
 displayBooks();
+
+// When the button is clicked, open the form
+newBookButton.addEventListener('click',() => formAddBook.style.visibility = "visible");
+
+
+
