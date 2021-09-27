@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   gap:10px;
-  width:;
+  width:250px;
   position: absolute;
   left:50%;
   bottom: 50%;
@@ -57,6 +57,8 @@
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
   background-color: white;
   visibility:hidden;
+  font-size: 25px;
+  font-weight: 700;
 }
 
 #form-checkbox{
