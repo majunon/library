@@ -13,7 +13,6 @@ const auteur = document.querySelector('#form-auteur');
 const pages = document.querySelector('#form-pages');
 const dejaLu = document.querySelector('#form-checkbox');
 
-
 // The constructor
 function Book(id, title, author, nbOfPages, alreadyRead) {
   this.id = id;
@@ -21,15 +20,21 @@ function Book(id, title, author, nbOfPages, alreadyRead) {
   this.author = author;
   this.nbOfPages = nbOfPages;
   this.alreadyRead = alreadyRead;
-  this.info = function () {
-    return (`${title} by ${author}, ${nbOfPages} pages, ${alreadyRead}`);
-  }
 }
 
 // A function to add a book in the library
 function addBookToLibrary(title, author, nbOfPages, alreadyRead) {
-  let id = myLibrary.length;
-  myLibrary.push(new Book(id,title, author, nbOfPages, alreadyRead));
+  let index=0;
+  while(myLibrary.find(element => element.id == index)){
+    index++;
+  }
+  myLibrary.push(new Book(index,title, author, nbOfPages, alreadyRead));
+}
+
+// A function to remove a book from the library
+function removeBook(id){
+  myLibrary=myLibrary.filter(item => item.id != id);
+  displayBooks();
 }
 
 // Some books exemples
@@ -41,10 +46,10 @@ addBookToLibrary('La république', 'Platon', 818, true);
 // Function to displayBooks
 function displayBooks() {
   //Remove the old cards
-  while (wrap.firstChild) {
-    wrap.removeChild(wrap.firstChild);
+  while (wrap.lastChild) {
+    wrap.removeChild(wrap.lastChild);
   }
-  //Create the cards
+  // Create the cards
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement('div');
     let title = document.createElement('div');
@@ -67,12 +72,16 @@ function displayBooks() {
     card.classList.add("card");
     let data_id = document.createAttribute("data-id");
     data_id.value = myLibrary[i].id;
-    card.setAttributeNode(data_id);
+    suppr.setAttributeNode(data_id);
     title.classList.add("title");
     author.classList.add("author");
     pages.classList.add("pages");
     read.classList.add("read");
-    suppr.classList.add("suppr-button");
+    suppr.classList.add("suppr-button");   
+
+    suppr.addEventListener('click', event =>{
+      removeBook(event.target.getAttribute("data-id"));
+    });
 
     card.appendChild(title);
     card.appendChild(author);
@@ -80,6 +89,7 @@ function displayBooks() {
     card.appendChild(read);
     card.appendChild(suppr);
     wrap.appendChild(card);
+
   }
 }
 displayBooks();
@@ -93,5 +103,4 @@ formButton.addEventListener('click', function (e) {
   formAddBook.style.visibility = "hidden";
   displayBooks();
 })
-
 
