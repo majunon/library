@@ -1,4 +1,17 @@
 let myLibrary = []; //My book library
+// if the local storage has been used...
+if(localStorage.length){
+  myLibrary = localStorage.getItem('myLibrary'); // charge the library from the local storage
+  myLibrary = JSON.parse(myLibrary);
+}
+else{
+  // Add some books exemples
+  addBookToLibrary("L'interprétation du rêve", 'Sigmund Freud', 643, false);
+  addBookToLibrary('Ethique', 'Baruch Spinoza', 400, true);
+  addBookToLibrary("Emile ou de l'éducation", 'Jean-Jacques Rousseau', 512, false);
+  addBookToLibrary('La république', 'Platon', 818, true);
+}
+
 // The cards container
 const wrap = document.querySelector('.cards-container');
 // Add book button
@@ -20,6 +33,9 @@ function Book(id, title, author, nbOfPages, alreadyRead) {
   this.author = author;
   this.nbOfPages = nbOfPages;
   this.alreadyRead = alreadyRead;
+  this.toggleReadStatus = function(){
+    this.alreadyRead=!this.alreadyRead;
+  }
 }
 
 // A function to add a book in the library
@@ -29,6 +45,7 @@ function addBookToLibrary(title, author, nbOfPages, alreadyRead) {
     index++;
   }
   myLibrary.push(new Book(index,title, author, nbOfPages, alreadyRead));
+  localStorage.setItem('myLibrary',JSON.stringify(myLibrary));
 }
 
 // A function to remove a book from the library
@@ -36,12 +53,6 @@ function removeBook(id){
   myLibrary=myLibrary.filter(item => item.id != id);
   displayBooks();
 }
-
-// Some books exemples
-addBookToLibrary("L'interprétation du rêve", 'Sigmund Freud', 643, false);
-addBookToLibrary('Ethique', 'Baruch Spinoza', 400, true);
-addBookToLibrary("Emile ou de l'éducation", 'Jean-Jacques Rousseau', 512, false);
-addBookToLibrary('La république', 'Platon', 818, true);
 
 // Function to displayBooks
 function displayBooks() {
@@ -55,7 +66,7 @@ function displayBooks() {
     let title = document.createElement('div');
     let author = document.createElement('div');
     let pages = document.createElement('div');
-    let read = document.createElement('div');
+    let read = document.createElement('button');
     let suppr = document.createElement('button');
 
     title.innerText = myLibrary[i].title;
@@ -67,6 +78,10 @@ function displayBooks() {
     else{
       read.innerText = "Pas encore lu";
     }
+    read.addEventListener('click',event => {
+      myLibrary[i].toggleReadStatus();
+      displayBooks();
+    });
     suppr.innerText = "X";
 
     card.classList.add("card");

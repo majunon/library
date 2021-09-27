@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
 * {
   font-family: 'Raleway', sans-serif;
 }
@@ -17,6 +16,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  max-width: 300px;
+  justify-content: space-between;
 }
 
 .title {
@@ -34,43 +35,51 @@
   align-self: end;
 }
 
-.addBook{
+.read {
+  background-color: white;
+  border: solid black 1px;
+}
+
+.addBook {
   background-color: white;
   border: solid black 1px;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
-  margin : 25px;
-  font-size: 20px;;
+  margin: 25px;
+  font-size: 20px;
+  ;
 }
 
-.formAddBook{
+.formAddBook {
   display: flex;
   flex-direction: column;
-  gap:10px;
-  width:250px;
+  gap: 10px;
+  width: 250px;
   position: absolute;
-  left:50%;
+  left: 50%;
   bottom: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   margin: auto;
   padding: 20px;
   border: solid black 1px;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.46);
   background-color: white;
-  visibility:hidden;
+  visibility: hidden;
   font-size: 25px;
   font-weight: 700;
 }
 
-#form-checkbox{
+#form-checkbox {
   align-self: flex-start;
 }
-#form-button{
-  width:50%;
-  margin:auto;
+
+#form-button {
+  width: 50%;
+  margin: auto;
 }
 
-.suppr-button{
-  width:30px;
+.suppr-button {
+  width: 30px;
   background-color: white;
   border: solid black 1px;
+  align-self: flex-start;
 }
